@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <!-- <script src="./d3_graphs.js"></script>  -->
+  <script src="./d3map.js"></script> 
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://d3js.org/d3-array.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>CSE512 | A3 [Seattle Housing Investment Compass]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<div class="content">
+   <section class="title">
+    <a href="/">[Seattle Housing Investment Compass]</a>
+  </section>
+
+   <section>
+    <p>
+      <strong>Team Members</strong>: [Fengyi Xu, Xumin Zhu, Yue Wang]
+    </p>
+  </section>
+
+   <section>
+    <em>[Add: Interactive visualization goes here! Note that you are free to change the markup and styling on this page however you like.]</em>
+      
+    <leftgraph>
+<!-- <ul>
+        <li><a href="#">Trend analysis graphs(line chart)</a></li>
+        <li><a href="#">Trend analysis of all types of housings (small multiples in bar charts)</a></li>--!
+      </ul>      
+-->
+      <div class="trend">
+      <p>Trend analysis graphs(line chart)</p> <br>
+      
+       var svg = d3.select('svg');
+       <!--Create rectangle element inside SVG-->
+         svg.append('rect')
+         .attr('x', 50)
+         .attr('y', 50)
+         .attr('width', 200)
+         .attr('height', 100)
+        .attr('fill', 'green');
+        </div>
+        
+      <p>Trend analysis of all types of housings (small multiples in bar charts</p> 
+    </leftgraph>
+  
+    <rightmap>
+      <h3>Explore your interested city in King County</h3>
+      <h5>You can at most select 3 cities to compare.</h5>
+      <p>graph area</p>
+      <div class="SeattleMap">
+        <script type="text/javascript">
+          var width = 300,
+              height = 400,
+              margin = {top: 20, right: 23, bottom: 20, left: 23};
+
+          var svg = d3.select(".SeattleMap").append("svg")
+                      .attr("viewBox", "0 0 " + width + " " + height)
+                      .attr("width", width + margin.right + margin.left)
+                      .attr("height", height + margin.top + margin.bottom)
+                      .style("display", "block");
+          
+          var testjson = "https://raw.githubusercontent.com/yuew03/house_compass/master/dataset/data_set/great_sea_are.json";
+
+          // var albersProjection = d3.geoAlbers()
+          //                          .scale(1900)
+          //                          .rotate([0, 0])
+          //                          .center([47.6455, -122.2559])
+          //                          .translate([width/2, height/2]);
+
+          // var geoData;
+          // $.getJSON( testjson, function( data ) {
+          //     geoData = data;
+          //     console.log(geoData);
+
+          //     console.log(geoData);
+          //     var geoPath = d3.geoPath()
+          //                     .projection(albersProjection);
+
+          //     var g = svg.append("g");
+
+          //     g.selectAll('path')
+          //      .data(geoData.features)
+          //      .enter()
+          //      .append('path')
+          //      .attr('fill', "none")
+          //      .attr('stroke', 'blake')
+          //      .attr('d', geoPath);
+
+
+
+          //   });
+
+          
+
+
+
+          var geoData;
+          $.getJSON( testjson, function( data ) {
+              geoData = data;
+
+              var geoPath = d3.geoPath();
+
+              projection = d3.geoIdentity()
+                             .reflectY(true)
+                             .fitWidth(width, geoData);
+        
+              path = d3.geoPath(projection);
+
+              console.log(geoData);
+
+              var g = svg.append("g");
+
+              g.selectAll('path')
+               .data(geoData.features)
+               .enter()
+               .append('path')
+               .attr('fill', "none")
+               .attr('stroke', 'blake')
+               .attr('d', geoPath);
+
+            });
+
+          
+
+
+
+
+
+
+        </script>
+      </div>
+    </rightmap>
+
+  </section>
+
+  <div class="footer">
+    <a href="https://courses.cs.washington.edu/courses/cse512/19sp/">CSE 512 Data Visualization</a>
+    <a href="http://www.washington.edu">University of Washington</a>
+  </div>
+ </div>
+ 
+ <script> 
+    // (function() { 
+    //     show(); 
+    // })(); 
+</script>
+
+</body>
+
+
+
+</html> 
