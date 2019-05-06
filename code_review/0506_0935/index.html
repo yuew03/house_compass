@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xml:lang="en" lang="en">
+<head>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <!-- <script src="./d3_graphs.js"></script>  -->
+  <!-- <script type="text/javascript" src = "/trend.js"></script>> -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>CSE512 | A3 [Seattle Housing Investment Compass]</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+
+<body>
+<div class="content">
+   <section class="title">
+    <a href="/">[Seattle Housing Investment Compass]</a>
+  </section>
+
+   <section>
+    <p>
+      <strong>Team Members</strong>: [Fengyi Xu, Xumin Zhu, Yue Wang]
+    </p>
+  </section>
+
+   <section>
+    <em>[Add: Interactive visualization goes here! Note that you are free to change the markup and styling on this page however you like.]</em>
+      
+    <leftgraph>
+      <p>Trend analysis graphs(line chart)</p>
+      <div id ="trendvis">
+         <!-- Create a div where the graph will take place -->
+          <script src="https://d3js.org/d3.v5.js"></script>
+          <script src="trend2.js"></script>
+          <!-- Color Scale -->
+          <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+       
+      </div>
+      
+      <script>
+      d3.select("#trendvis")
+      .transition()
+      .duration(1000)
+      .style("background-color", "pink");
+      </script>
+          
+               
+    </leftgraph>
+  
+    <rightmap>
+      <h3>Explore your interested city in King County</h3>
+      <h5>You can at most select 3 cities to compare.</h5>
+      <p>graph area</p>
+    </rightmap>
+
+  </section>
+
+  <div class="footer">
+    <a href="https://courses.cs.washington.edu/courses/cse512/19sp/">CSE 512 Data Visualization</a>
+    <a href="http://www.washington.edu">University of Washington</a>
+  </div>
+ </div>
+ 
+<!--  <script> 
+    (function() { 
+        show(); 
+    })(); 
+</script> -->
+
+</body>
+
+
+
+</html> 
